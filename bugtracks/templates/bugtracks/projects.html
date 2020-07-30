@@ -1,0 +1,19 @@
+{% extends 'bugtracks/base.html' %}
+
+{% block content %}
+
+<p>Projects:</p>
+
+<ul>
+    {% for project in projects %}
+        <li>
+            <a href="{% url 'bugtracks:project' project.id %}">{{ project }}</a>
+        </li>
+    {% empty %}
+        <li>There are no projects in development at the moment.</li>
+    {% endfor %}
+</ul>
+
+<a href="{% url 'bugtracks:new_project' %}">Add new project</a>
+
+{% endblock content %}

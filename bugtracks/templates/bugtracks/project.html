@@ -1,0 +1,21 @@
+{% extends 'bugtracks/base.html' %}
+
+{% block content %}
+
+<p> Project: {{ project }}</p>
+
+<p>Tickets: </p>
+<ul>
+    {% for ticket in tickets %}
+        <li>
+            <p>{{ ticket.date_added|date:' M d, Y H:i' }}</p>
+            <p>{{ ticket.text|linebreaks }}</p>
+            <p>{{ ticket.message|linebreaks }}</p>
+            <p>Priority: {{ ticket.priority }}</p>
+        </li>
+    {% empty %}
+        <li>There are no tickets submitted yet.</li>
+    {% endfor %}
+</ul>
+
+{% endblock content %}

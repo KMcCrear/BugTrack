@@ -1,0 +1,12 @@
+{% extends 'bugtracks/base.html' %}
+
+{% block content %}
+<p>Add a new project to manage:</p>
+
+<form action="{% url 'bugtracks:new_project' %}" method='post'>
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button name="submit">Add new project</button>
+</form>
+
+{% endblock content %}

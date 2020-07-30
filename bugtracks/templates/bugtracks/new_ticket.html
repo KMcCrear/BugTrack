@@ -1,0 +1,15 @@
+{% extends 'bugtracks/base.html' %}
+
+{% block content %}
+
+<p><a href="{% url 'bugtracks:project' project.id %}">{{ project }}</a></p>
+
+<p>Create new ticket: </p>
+
+<form action="{% url 'bugtracks:new_ticket' project.id %}" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button name="submit">Submit ticket</button>
+</form>
+
+{% endblock content %}
