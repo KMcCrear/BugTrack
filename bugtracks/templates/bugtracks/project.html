@@ -3,8 +3,12 @@
 {% block content %}
 
 <p> Project: {{ project }}</p>
+<p>In development: {{ project.in_progress }}</p>
 
-<p>Tickets: </p>
+<p>Active Tickets: </p>
+<p>
+    <a href="{% url 'bugtracks:new_ticket' project.id %}">Create new ticket</a>
+</p>
 <ul>
     {% for ticket in tickets %}
         <li>
@@ -12,6 +16,9 @@
             <p>{{ ticket.text|linebreaks }}</p>
             <p>{{ ticket.message|linebreaks }}</p>
             <p>Priority: {{ ticket.priority }}</p>
+            <p>
+                <a href="{% url 'bugtracks:edit_ticket' ticket.id %}">Edit ticket</a>
+            </p>
         </li>
     {% empty %}
         <li>There are no tickets submitted yet.</li>

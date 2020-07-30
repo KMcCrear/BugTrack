@@ -34,6 +34,7 @@ INSTALLED_APPS = [
 
     # My apps
     'bugtracks',
+    'users',
 
     # Django default apps
     'django.contrib.admin',

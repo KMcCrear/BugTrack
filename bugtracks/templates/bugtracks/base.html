@@ -1,6 +1,13 @@
 <P>
     <a href="{% url 'bugtracks:index' %}">Bug Track</a> -
-    <a href="{% url 'bugtracks:projects' %}">Projects</a>
+    <a href="{% url 'bugtracks:projects' %}">Projects</a> -
+    {% if user.is_authenticated %}
+        Hello, {{ user.username }} -
+        <a href="{% url 'users:logout' %}">Log out</a>
+    {% else %}
+        <a href="{% url 'users:register' %}">Register</a> -
+        <a href="{% url 'users:login' %}">Log in</a>
+    {% endif %}
 </P>
 
 {% block content %}{% endblock content %}
