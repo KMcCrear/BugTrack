@@ -26,10 +26,16 @@ class Ticket(models.Model):
     HIGH = 'HIGH'
     MEDIUM = 'MEDIUM'
     LOW = 'LOW'
+    SUBMITTED = 'In progress'
+    COMPLETED = 'Completed'
     PRIORITY_CHOICES = [
         (HIGH, 'High'),
         (MEDIUM, 'Medium'),
         (LOW, 'Low')
+    ]
+    TICKET_PROGRESS = [
+        (SUBMITTED, 'In progress'),
+        (COMPLETED, 'Completed')
     ]
 
     project = models.ForeignKey(Project, on_delete=models.CASCADE)
@@ -38,6 +44,8 @@ class Ticket(models.Model):
     priority = models.CharField(max_length=6,
     choices=PRIORITY_CHOICES,
     default=MEDIUM)
+    ticket_progress = models.CharField(max_length=20,
+    choices=TICKET_PROGRESS, default=SUBMITTED)
     date_added = models.DateTimeField(auto_now_add=True)
 
     class Meta:

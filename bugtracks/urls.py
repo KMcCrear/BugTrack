@@ -18,4 +18,7 @@ urlpatterns = [
     path('new_ticket/<int:project_id>/', views.new_ticket, name='new_ticket'),
     # Page for editing tickets
     path('edit_ticket/<int:ticket_id>/', views.edit_ticket, name='edit_ticket'),
+    # Path for completing tickets
+    path('completed_ticket/<int:ticket_id>/', views.completed_ticket, name='completed_ticket'),
+    # Path for deleting tickets
 ]

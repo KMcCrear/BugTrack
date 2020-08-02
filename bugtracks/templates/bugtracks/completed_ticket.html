@@ -4,12 +4,12 @@
 
 <p><a href="{% url 'bugtracks:project' project.id %}">{{ project }}</a></p>
 
-<p>Edit ticket:</p>
+<p>Completed ticket:</p>
 
-<form action="{% url 'bugtracks:edit_ticket' ticket.id %}" method="post">
+<form action="{% url 'bugtracks:completed_ticket' ticket.id %}" method="post">
     {% csrf_token %}
     {{ form.as_p }}
-    <button type="submit" name="save">Save changes</button> <button type="submit" name="delete">Delete</button>
+    <button name="submit">Mark as complete</button>
 </form>
 
 {% endblock content %}
