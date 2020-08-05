@@ -26,7 +26,8 @@ class Ticket(models.Model):
     HIGH = 'HIGH'
     MEDIUM = 'MEDIUM'
     LOW = 'LOW'
-    SUBMITTED = 'In progress'
+    SUBMITTED = 'submitted'
+    IN_DEV = 'In progress'
     COMPLETED = 'Completed'
     PRIORITY_CHOICES = [
         (HIGH, 'High'),
@@ -34,7 +35,8 @@ class Ticket(models.Model):
         (LOW, 'Low')
     ]
     TICKET_PROGRESS = [
-        (SUBMITTED, 'In progress'),
+        (SUBMITTED, 'Submitted'),
+        (IN_DEV, 'In progress'),
         (COMPLETED, 'Completed')
     ]
 

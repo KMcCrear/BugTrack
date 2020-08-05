@@ -18,7 +18,7 @@
             <p>Error message:</p>
             <p>{{ ticket.message|linebreaks }}</p>
             <p>Priority: {{ ticket.priority }}</p>
-            <p>Assigned by: {{ user.username }}</p>
+            <p>Assigned by: {{ project.owner }}</p>
             <p>
                 <a href="{% url 'bugtracks:edit_ticket' ticket.id %}">Edit ticket</a> -
                 <a href="{% url 'bugtracks:completed_ticket' ticket.id %}">Complete ticket</a>
@@ -27,6 +27,13 @@
     {% empty %}
         <li>There are no tickets submitted yet.</li>
     {% endfor %}
+</ul>
+<P>Completed tickets:</P>
+<ul>
+    {% if tickets.ticket_progress == COMPLETED %}
+
+    {% endif %}
+
 </ul>
 
 {% endblock content %}

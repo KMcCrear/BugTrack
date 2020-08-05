@@ -11,8 +11,8 @@ class ProjectForm(forms.ModelForm):
 class TicketForm(forms.ModelForm):
     class Meta:
         model = Ticket
-        fields =['priority', 'text', 'message']
-        labesl = {'priority': 'Priority: ', 'text': '', 'message': ''}
+        fields =['priority', 'text', 'message', 'ticket_progress']
+        labesl = {'priority': 'Priority: ', 'text': '', 'message': '', 'ticket_progress': ''}
         widgets = {'text': forms.Textarea(attrs={'cols': 80}),
         'message': forms.Textarea(attrs={'cols': 80})}
 
