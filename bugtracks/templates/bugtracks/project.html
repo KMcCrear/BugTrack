@@ -13,27 +13,20 @@
     {% for ticket in tickets %}
         <li>
             <p>{{ ticket.date_added|date:' M d, Y H:i' }}</p>
+            <p>Problem: {{ ticket.bug }}</p>
             <p>Steps taken to find the bug:</p>
             <p>{{ ticket.text|linebreaks }}</p>
             <p>Error message:</p>
             <p>{{ ticket.message|linebreaks }}</p>
             <p>Priority: {{ ticket.priority }}</p>
-            <p>Assigned by: {{ project.owner }}</p>
+            <p>Assigned by: {{ ticket.owner }}</p>
             <p>
-                <a href="{% url 'bugtracks:edit_ticket' ticket.id %}">Edit ticket</a> -
-                <a href="{% url 'bugtracks:completed_ticket' ticket.id %}">Complete ticket</a>
+                <a href="{% url 'bugtracks:edit_ticket' ticket.id %}">Edit ticket</a>
             </p>
         </li>
     {% empty %}
         <li>There are no tickets submitted yet.</li>
     {% endfor %}
-</ul>
-<P>Completed tickets:</P>
-<ul>
-    {% if tickets.ticket_progress == COMPLETED %}
-
-    {% endif %}
-
 </ul>
 
 {% endblock content %}

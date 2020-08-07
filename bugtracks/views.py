@@ -19,6 +19,7 @@ def projects(request):
 def project(request, project_id):
     """Show a project and all it's tickets"""
     project = Project.objects.get(id=project_id)
+    ticket_owner = Ticket.owner
     tickets = project.ticket_set.order_by('-date_added')
     no_tickets = Ticket.objects.filter(project_id=project_id).count()
     context = {'project': project, 'tickets': tickets, 'no_tickets': no_tickets}

@@ -5,6 +5,7 @@
 <p>Here you can track all the bugs in your projects.</p>
 
 <br>
+
 {% if user.is_authenticated %}
     <P></P>
 {% else %}
@@ -14,5 +15,6 @@
         <a href="{% url 'users:login' %}">Log in</a>
     </p>
 {% endif %}
+
 
 {% endblock content %}
