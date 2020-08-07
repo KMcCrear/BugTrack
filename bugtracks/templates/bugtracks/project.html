@@ -1,8 +1,11 @@
 {% extends 'bugtracks/base.html' %}
 
+{% block page_header %}
+    <h1> Project: {{ project }}</h1>
+{% endblock page_header %}
+
 {% block content %}
 
-<p> Project: {{ project }}</p>
 <p>In development: {{ project.in_progress }}</p>
 
 <p>Active Tickets: {{ no_tickets }}</p>
@@ -11,21 +14,22 @@
 </p>
 <ul>
     {% for ticket in tickets %}
-        <li>
-            <p>{{ ticket.date_added|date:' M d, Y H:i' }}</p>
-            <p>Problem: {{ ticket.bug }}</p>
-            <p>Steps taken to find the bug:</p>
-            <p>{{ ticket.text|linebreaks }}</p>
-            <p>Error message:</p>
-            <p>{{ ticket.message|linebreaks }}</p>
-            <p>Priority: {{ ticket.priority }}</p>
-            <p>Assigned by: {{ ticket.owner }}</p>
-            <p>
-                <a href="{% url 'bugtracks:edit_ticket' ticket.id %}">Edit ticket</a>
-            </p>
-        </li>
+        <div class="card mb-3">
+            <h4 class="card-header">
+                Problem: {{ ticket.bug }} <br>
+                {{ ticket.date_added|date:' M d, Y H:i' }} -
+                <small><a href="{% url 'bugtracks:edit_ticket' ticket.id %}">Edit ticket</a></small>
+            </h4>
+            <div class="card-body">
+                <h5>Steps taken to find the bug:</h5>
+                <p>{{ ticket.text|linebreaks }}</p>
+                <h5>Error message:</h5>
+                <p>{{ ticket.message|linebreaks }}</p>
+                <p>Priority: {{ ticket.priority }}</p>
+                <p>Assigned by: {{ ticket.owner }}</p>
+        </div>
     {% empty %}
-        <li>There are no tickets submitted yet.</li>
+        <p>There are no tickets submitted yet.</p>
     {% endfor %}
 </ul>
 

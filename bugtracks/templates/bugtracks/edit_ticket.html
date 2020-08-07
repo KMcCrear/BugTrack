@@ -1,4 +1,5 @@
 {% extends 'bugtracks/base.html' %}
+{% load bootstrap4 %}
 
 {% block content %}
 
@@ -6,10 +7,13 @@
 
 <p>Edit ticket:</p>
 
-<form action="{% url 'bugtracks:edit_ticket' ticket.id %}" method="post">
+<form method="post" action="{% url 'bugtracks:edit_ticket' ticket.id %}" method="post">
     {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit" name="save">Save changes</button> <button type="submit" name="delete">Delete</button>
+    {% bootstrap_form form %}
+    {% buttons %}
+    <button type="submit" name="save" class="btn btn-primary">Save changes</button> <button 
+    type="submit" name="delete" class="btn btn-primary">Delete</button>
+    {% endbuttons %}
 </form>
 
 {% endblock content %}

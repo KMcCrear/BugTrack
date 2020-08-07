@@ -36,6 +36,9 @@ INSTALLED_APPS = [
     'bugtracks',
     'users',
 
+    # Third party apps
+    'bootstrap4',
+
     # Django default apps
     'django.contrib.admin',
     'django.contrib.auth',

@@ -1,20 +1,19 @@
 {% extends 'bugtracks/base.html' %}
 
-{% block content %}
+{% block page_header %}
+<div class="jumbotron">
+    <h1 class="display-3">Track the bugs in your projects</h1>
 
-<p>Here you can track all the bugs in your projects.</p>
+    <p class="lead">Keep a log of the bugs that appear in your project, track them down and find the solution.</p>
 
-<br>
+    {% if user.is_authenticated %}
+        <p></p>
+    {% else %}
+        <a class="btn btn-lg btn-primary" href="{% url 'users:register' %}" role="button">Register &raquo;</a>
+        <p>Already have an account?</p>
+        <a class="btn btn-sm btn-primary" href="{% url 'users:login' %}" role="button">Log in</a>
+    {% endif %}
+</div>
 
-{% if user.is_authenticated %}
-    <P></P>
-{% else %}
-    <p><a href="{% url 'users:register' %}">Register here</a></p>
-    <p>Already have an account?</p>
-    <p>
-        <a href="{% url 'users:login' %}">Log in</a>
-    </p>
-{% endif %}
+{% endblock page_header %}
 
-
-{% endblock content %}

@@ -1,12 +1,15 @@
 {% extends 'bugtracks/base.html' %}
+{% load bootstrap4 %}
 
 {% block content %}
 <p>Add a new project to manage:</p>
 
-<form action="{% url 'bugtracks:new_project' %}" method='post'>
+<form method='post' action="{% url 'bugtracks:new_project' %}" class="form">
     {% csrf_token %}
-    {{ form.as_p }}
-    <button name="submit">Add new project</button>
+    {% bootstrap_form form %}
+    {% buttons %}
+    <button name="submit" class="btn btn-primary">Add new project</button>
+    {% endbuttons %}
 </form>
 
 {% endblock content %}
